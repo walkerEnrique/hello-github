@@ -1,5 +1,7 @@
 package interview.study.thread;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -40,6 +42,7 @@ public class MyThreadPoolDemo
         //模拟人来办理业务
         try
         {
+            List<String> str = new ArrayList<String>();
             for (int i = 0; i < 5; i++) {
                 executor.execute(()->{
                     System.out.println(Thread.currentThread().getName()+"\t办理业务");

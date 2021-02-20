@@ -1,5 +1,6 @@
 package interview.study.thread;
 
+//DCL（Double check lock）双端锁实现
 public class SingletonDemo {
 
     private static volatile SingletonDemo instance = null;
