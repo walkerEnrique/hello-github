@@ -19,6 +19,7 @@ public class SumTwo {
 //        System.out.println(sumTwoTwo(array,target));
     }
 
+    //在一个数组当中,找目标
     public static int[] sumTwoOne(Integer[] array,int target)
     {
         ArrayList<Integer> arrayList = new ArrayList(Arrays.asList(array));
