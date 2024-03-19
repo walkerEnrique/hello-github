@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cloud-demo-service
+    dataresource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: org.gjt.mm.mysql.Driver
+      url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=utf-8&useeSSL=false
+      username: root
+      password: 123456
+
+mybatis:
+  mapperLocation: classpath:mapper/.xml
+  type-aliases-package: com.study.springboot.com.study.springboot.entites
