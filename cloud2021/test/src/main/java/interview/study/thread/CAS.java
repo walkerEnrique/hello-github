@@ -17,4 +17,8 @@ public class CAS {
         System.out.println("***第几次访问：" +next);
         return next;
     }
+
+    public static void main(String[] args) {
+        new CAS().getAndIncrcement();
+    }
 }
