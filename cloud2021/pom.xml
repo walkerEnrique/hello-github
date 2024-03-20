@@ -11,6 +11,7 @@
     <modules>
         <module>test</module>
         <module>spring-boot-demo</module>
+        <module>loseJob-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -89,6 +90,7 @@
                 <optional>true</optional>
             </dependency>
         </dependencies>
+
     </dependencyManagement>
 
 

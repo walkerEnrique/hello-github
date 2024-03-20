@@ -15,6 +15,7 @@ public class TestDemo {
         System.out.println(str2.intern());
         System.out.println(str2 == str2.intern());
 
+
         ConcurrentHashMap<Object, Object> s = new ConcurrentHashMap<>();
 
     }
