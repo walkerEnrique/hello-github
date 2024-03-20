@@ -1,5 +1,6 @@
 package interview.study.thread;
 
+//DCL（Double check lock）双端锁实现
 public class SingletonDemo {
 
     private static volatile SingletonDemo instance = null;
@@ -22,7 +23,7 @@ public class SingletonDemo {
     public static void main(String[] args){
         for (int i = 0; i < 20; i++) {
             new Thread(()->{
-                SingletonDemo.getInstace();
+                getInstace();
 //                System.out.println(Thread.currentThread().getName()+"\t name is");
             },String.valueOf(i)).start();
         }
