@@ -14,25 +14,21 @@ public class SumTwo {
 //        System.out.println(sumTwoTwo(array,target));
 
         //测试链表创建
-        ListNode node1 = new ListNode(1, "1");
-        ListNode node2 = new ListNode(2, "1");
-        ListNode node3 = new ListNode(3, "1");
-        ListNode node4 = new ListNode(4, "1");
+        ListNode node = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
 
-        ListNode node = new ListNode();
-        node.add(node1);
-        node.add(node2);
-        node.add(node3);
-        node.add(node4);
+        node = new ListNode().reverseLinklist(node);
 
-//        System.out.println(node.isPalindrome(node));
-        System.out.println(node.isPalindromeReferenceAnswer(node1));
+//        System.out.println(node.isPalindromeReferenceAnswer(node));
 
+        while (node != null) {
+            System.out.println(node.val);
+            node = node.next;
+        }
 
 
     }
 
-    //在一个数组当中,找到目标值
+    //在一个数组当中,找到目标值，kawasakiTrump
     public static int[] sumTwoOne(Integer[] array, int target) {
         ArrayList<Integer> arrayList = new ArrayList(Arrays.asList(array));
         for (int i = 0; i < arrayList.size(); i++) {
@@ -80,14 +76,13 @@ public class SumTwo {
         ListNode() {
         }
 
-
         ListNode(int val) {
             this.val = val;
         }
 
-        ListNode(int val, Object object) {
+        ListNode(int val, ListNode next) {
             this.val = val;
-            this.obj = object;
+            this.next = next;
         }
 
         ListNode(int val, Object object, ListNode next) {
@@ -98,67 +93,35 @@ public class SumTwo {
 
         public void add(ListNode linkedNode) {
             //此时需要一个辅助节点
-            ListNode temp = new ListNode(0,"0");
+            ListNode temp = new ListNode(0);
 
             //遍历找到最后一个节点
-            while (true) {
-                if (temp.next == null) {
-                    break;
-                }
+            while (temp != null) {
                 //没有找到最后一个节点，辅助节点 temp 就向后移动们继续遍历
                 temp = temp.next;
             }
         }
 
-    /*
-    回文鏈表具体实现
-     */
-
-        public boolean isPalindrome(ListNode head) {
-
-            // 定义两个快慢指针节点
-            ListNode slow = head, fast = head;
-
-            // 便利链表，跑的快的比跑的慢的多一倍的路程，当快指针到末尾时，慢指针才到一般左右；
-            while (fast.next != null && slow.next != null) {
-                fast = head.next.next;
-                slow = head.next;
-            }
-
-            // 如果fast不为空，证明是链表长度是奇数个
-            if (fast != null) {
-                slow = slow.next;
-            }
-            // 反转后半部分链表
-            slow = reverseLinklist(slow);
-
-            fast = head;
-
-            // 遍历前后部分链表，对比是否是回文列表
-            // 他吗的这儿报错了，还不知道为什么，日了dog，我还辛苦的背了半天都不知道对不对！回去再测试下，（不测了，打游戏去了难受。。睡觉了
-            // 等下再测下反转链表对不对。。
-            while (slow != null) {
-                if (fast.val != slow.val)
-                    return false;
-                fast = fast.next;
-                slow = slow.next;
-            }
-
-            return true;
-        }
-
         private ListNode reverseLinklist(ListNode head) {
+            // 定义null，为空的时候就到链表结尾了
             ListNode prev = null;
             while (head != null) {
+                // 存储头节点的下一个节点
+                // 留着下一步访问
                 ListNode next = head.next;
+                // 相当于把新链表放在原来旧链表的每一个位置
+                // 头节点的下一个结点指向null
                 head.next = prev;
+                // 头节点给先前的节点
                 prev = head;
+                // 头节点的下一个节点给头，相当于逆序遍历
                 head = next;
             }
-
+            // 返回变更后的头节点
             return prev;
         }
 
+        // 回文链表标准答案
         public boolean isPalindromeReferenceAnswer(ListNode head) {
 
             List<Integer> vals = new ArrayList<Integer>();
@@ -167,6 +130,7 @@ public class SumTwo {
             ListNode currentNode = head;
             while (currentNode != null) {
                 vals.add(currentNode.val);
+                // 这才叫遍历，下一个节点变成当前节点，节点继续循环往下走。
                 currentNode = currentNode.next;
             }
 
@@ -180,6 +144,18 @@ public class SumTwo {
                 front++;
                 back--;
             }
+            return true;
+        }
+
+        // 环形链表，
+        public boolean hasCycle(ListNode head){
+            // 分两种情况，一种是半截分叉环过来了，还有一种是末尾分叉环到前边去了。。
+            // 循环遍历下，如果有重复的直接break；看能搞定不，不想写算法题了，还是吹牛比好玩。。
+            // 回去再说吧，好无聊，我要无聊死了。。直接这样循环，可能就环不出去了。
+            while(head != null ){
+                head = head.next;
+            }
+
             return true;
         }
     }
