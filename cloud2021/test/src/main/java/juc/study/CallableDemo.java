@@ -1,6 +1,9 @@
 package juc.study;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 class MyThread implements Runnable
 {
@@ -36,6 +39,10 @@ public class CallableDemo
         int result02 = futureTask.get();
         System.out.println("********result"+(result01+result02));
 
+        // 多线程生成
+
+
     }
+
 
 }

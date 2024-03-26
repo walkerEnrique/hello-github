@@ -1,6 +1,5 @@
 package interview.study.thread;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import interview.study.enums.CountryEnum;
 
 import java.util.concurrent.CountDownLatch;
@@ -37,4 +36,5 @@ public class CountDownLatchDemo {
         System.out.println(Thread.currentThread().getName()+"\t 统一了");
 
     }
+
 }

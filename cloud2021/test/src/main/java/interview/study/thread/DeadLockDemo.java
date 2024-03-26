@@ -17,6 +17,7 @@ class HoldLockThread implements Runnable
     {
         synchronized (lockA)
         {
+            // 死锁：如何解决死锁；
             //sleep3秒
             try{TimeUnit.SECONDS.sleep(3);}catch(InterruptedException e){e.printStackTrace();}
             System.out.println(Thread.currentThread().getName()+"\t 自己持有："+lockA+"\t 尝试持有: "+lockB);
