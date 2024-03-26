@@ -151,12 +151,16 @@ public class SumTwo {
         public boolean hasCycle(ListNode head){
             // 分两种情况，一种是半截分叉环过来了，还有一种是末尾分叉环到前边去了。。
             // 循环遍历下，如果有重复的直接break；看能搞定不，不想写算法题了，还是吹牛比好玩。。
-            // 回去再说吧，好无聊，我要无聊死了。。直接这样循环，可能就环不出去了。
+            // 定义一个集合装数据
+            List list = new ArrayList<Integer>();
             while(head != null ){
+                if(list.contains(head.val)){
+                    return true;
+                }
+                list.add(head.val);
                 head = head.next;
             }
-
-            return true;
+            return false;
         }
     }
 }
