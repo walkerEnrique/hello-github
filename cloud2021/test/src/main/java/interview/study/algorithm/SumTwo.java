@@ -91,17 +91,6 @@ public class SumTwo {
             this.next = next;
         }
 
-        public void add(ListNode linkedNode) {
-            //此时需要一个辅助节点
-            ListNode temp = new ListNode(0);
-
-            //遍历找到最后一个节点
-            while (temp != null) {
-                //没有找到最后一个节点，辅助节点 temp 就向后移动们继续遍历
-                temp = temp.next;
-            }
-        }
-
         private ListNode reverseLinklist(ListNode head) {
             // 定义null，为空的时候就到链表结尾了
             ListNode prev = null;
@@ -149,10 +138,11 @@ public class SumTwo {
 
         // 环形链表，
         public boolean hasCycle(ListNode head){
-            // 分两种情况，一种是半截分叉环过来了，还有一种是末尾分叉环到前边去了。。
-            // 循环遍历下，如果有重复的直接break；看能搞定不，不想写算法题了，还是吹牛比好玩。。
+            // 分两种情况，一种是半截分叉环过来了，还有一种是末尾分叉环到前边去了，限制了只有一个分叉。
             // 定义一个集合装数据
             List list = new ArrayList<Integer>();
+//            Set nodeSet = new HashSet<ListNode>();
+//            nodeSet.contains(head);
             while(head != null ){
                 if(list.contains(head.val)){
                     return true;
@@ -162,5 +152,17 @@ public class SumTwo {
             }
             return false;
         }
+
+        // 反转链表，检验是否是环形链表，
+        // 反转后的链表的头节点还是以前的头节点不会变。
+        // 这是对的，不好意思。。他这个有点模棱两可的。
+        public boolean haveCycles(ListNode head){
+            ListNode tail = reverseLinklist(head);
+            if(head != null && head.next != null && tail == head){
+                return true;
+            }
+            return false;
+        }
+
     }
 }
