@@ -1,25 +1,11 @@
-package system.gc;
+package interview.study.algorithm;
 
 import java.util.Scanner;
 
-public class OoM {
+public class WhiteBoilWaterInterviewQ {
 
     public static void main(String[] args) {
-//        Byte[] bytes = new Byte[100 * 1024 * 1024];
-//        System.out.println();
-//
-//        Map<String,String> map = new HashMap<>();
-//        Scanner in = new Scanner(System.in);
-        // 注意 hasNext 和 hasNextLine 的区别
-//        while (in.hasNextInt()) { // 注意 while 处理多个 case
-//            int a = in.nextInt();
-//            int b = in.nextInt();
-//            System.out.println(a + b);
-//        }
-
-//        map.put("", "");
         getLowestPrice();
-
     }
 
     /*

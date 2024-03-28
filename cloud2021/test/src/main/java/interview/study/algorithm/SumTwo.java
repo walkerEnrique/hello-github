@@ -28,7 +28,7 @@ public class SumTwo {
 
     }
 
-    //在一个数组当中,找到目标值，kawasakiTrump
+    //在一个数组当中,找到目标值，kawasakiTriumph
     public static int[] sumTwoOne(Integer[] array, int target) {
         ArrayList<Integer> arrayList = new ArrayList(Arrays.asList(array));
         for (int i = 0; i < arrayList.size(); i++) {

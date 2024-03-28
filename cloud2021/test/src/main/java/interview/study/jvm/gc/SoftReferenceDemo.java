@@ -27,6 +27,6 @@ public class SoftReferenceDemo {
 
     public static void main(String[] args)
     {
-
+        softRef_Memory_Enough();
     }
 }
