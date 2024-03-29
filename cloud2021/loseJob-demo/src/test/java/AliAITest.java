@@ -16,8 +16,8 @@ public class AliAITest {
     public static void main1(String... args){
         List<String> list = ImmutableList.of("20240315","Holls","这是一个测试类");
         List<String> list2 = new ArrayList<>();
-        list2.add("Holls");
-        List testList = list2.stream().filter(strin -> strin.contains("Holls")).collect(Collectors.toList());
+        list2.add("Hollis");
+        List testList = list2.stream().filter(string -> string.contains("Hollis")).collect(Collectors.toList());
 
         testList.forEach(s-> System.out.println(s));
     }
