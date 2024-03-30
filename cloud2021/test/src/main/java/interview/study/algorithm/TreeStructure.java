@@ -1,5 +1,10 @@
 package interview.study.algorithm;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /*
     这是一个树结构
  */
@@ -77,7 +82,83 @@ public class TreeStructure {
         //这里再分别以左右两个子节点分别判断，
         //左子树范围的最小值是minVal，最大值是当前节点的值，也就是root的值，因为左子树的值要比当前节点小
         //右子数范围的最大值是maxVal，最小值是当前节点的值，也就是root的值，因为右子树的值要比当前节点大
+        // 左边的最小值是节点的值，当前节点值是最大的；
+        // is ValidBTS(root.left,minVal,root,val);
+        // 右边值是最小的，当前节点值是最小的
+        // is ValidBTS（root.right,root.val,maxVal）;
+        // 俩同时成立才行,力扣那沙雕网站，用int还不行，还得用long，真是服了
+        // 初始化小的在前边，节约一点内存空间。
+
         return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
     }
+
+    // 对称二叉树
+
+    public boolean isSymmetric(TreeNode node) {
+        if(node == null){
+            return true;
+        }
+        if(node.val >= 100 || node.val <= -100){
+            return false;
+        }
+        return isSymmetricHelper( node.left, node.right);
+    }
+
+    // 用递归的方法做
+    private boolean isSymmetricHelper(TreeNode left, TreeNode right) {
+        if(left == null && right == null){
+            return true;
+        }
+        // 当前节点只有一个或者两个的左右节点都不相同，直接返回false；
+        if(left == null || right == null || left.val != right.val){
+            return false;
+        }
+        // 比较每一层的数
+        // 对称二叉树，就像镜子一样一样的，可以折叠过来覆盖；左树的左边对应右树的右边，左数的右边对应右数的左边；
+        return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
+    }
+
+    // 用迭代的方法做，算了，不做了，有点麻烦。。
+
+    // 二叉树的层序遍历
+    // BFS(breadth first search) 广度优先搜索，这个题先用这个试试
+    // DFS(depth first search)；深度优先算法，这个暂时放在这儿，等我看完篇文章，然后再把这个算法题做了。
+    public List<List<Integer>> levelOrder(TreeNode node){
+
+        if(node == null){
+            return new ArrayList<List<Integer>>();
+        }
+        // 定义需要的集合
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        // 定义需要的队列，队列就相当于一个链表？
+        Queue<TreeNode> queue = new LinkedList<>();
+        // 根节点入队
+        queue.add(node);
+        // 如果队列不为空就继续循环
+        while(!queue.isEmpty()) {
+            // BFS打印，每层的节点数为levelNumber
+            int levelNumber = queue.size();
+            // subList存每层的节点值
+            List<Integer> subList = new ArrayList<Integer>();
+            // 循环打印每层的数据，并存入队列中
+            for(int i = 0;i<levelNumber;i++){
+                // 出队
+                TreeNode root = queue.poll();
+                subList.add(root.val);
+                // 左右节点不为空则加入队列中
+                if(root.left != null){
+                    queue.add(root.left);
+                }
+                if(root.right != null){
+                    queue.add(root.right);
+                }
+            }
+            // 每层都存到list中
+            list.add(subList);
+        }
+        return list;
+    }
+
+
 
 }

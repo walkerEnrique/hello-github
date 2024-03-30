@@ -2,7 +2,7 @@ package interview.study.algorithm;
 
 import java.util.*;
 
-public class SumTwo {
+public class SumTwoAndLinkNode {
 
     public static void main(String[] args) {
 //        Integer[] array1 = new Integer[]{2, 7, 11, 15};
