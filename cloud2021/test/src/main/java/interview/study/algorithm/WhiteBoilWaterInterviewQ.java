@@ -53,14 +53,11 @@ public class WhiteBoilWaterInterviewQ {
                         if (e >= c) {
                             // 输出最后报价
                             System.out.println(d - e + "");
-                            return;
                         } else {
                             System.out.println(c + "");
-                            return;
                         }
                     } else {
                         System.out.println(c + "");
-                        return;
                     }
                 }
             }
@@ -68,7 +65,6 @@ public class WhiteBoilWaterInterviewQ {
         }catch (Exception e){
             System.out.println("error"+e.toString());
         }
-        return ;
     }
 
 

@@ -9,12 +9,59 @@ public class BeforeBegin {
 //        int mostNum = majorityElement(new int[]{2,2,1,1,1,2,2});
 //        boolean bool = findTarget(new int[][]{{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15},{16,17,18,19,20},{21,22,23,24,25}},19);
 //        System.out.println(bool);
-        int[] nums = mergeArray(new int[]{1, 2, 3, 0, 0}, 5, new int[]{4, 5}, 2);
-        for (int i : nums) {
-            System.out.println(i);
-        }
+//        int[] nums = mergeArray(new int[]{1, 2, 3, 0, 0}, 5, new int[]{4, 5}, 2);
+//        for (int i : nums) {
+//            System.out.println(i);
+//        }
+        System.out.println(reverseInteger(123450));
     }
 
+    public static int myAsciiToInteger(String s){
+
+        // 丢弃前边无用的前导空格
+        // 确定字符是正的还是负的
+        // 无论是哪的其余东西除了数字都要被忽略
+        // 没有读入数据，则返回为零
+        // 返回的整数有范围的就是int的范围啦，如果多了需要截取到范围的数
+
+        // 总结：需求太多了，明天再弄吧
+
+        return 1;
+    }
+
+    // 外观数列
+    public static int countAndSay(int a){
+
+        // 数列是对前一项的描述；for example；
+        // 1，的后一项“一个1”
+        // 11，的后一项“两个个1”
+        // 21，的后一项“一个2，一个1”
+        // 1211，的后一项“一个1，一个2，二个1”
+        // 111221，的后一项“三个1，两个2，一个1”
+        // 312211;
+
+        // 规律找到了，怎么做呢，不晓得，看情况吧，嘻嘻嘻嘻嘻嘻
+
+        return 1;
+    }
+
+    // 整数反转
+    public static int reverseInteger(int a){
+
+        int res= 0;
+        while(a != 0){
+            // 设定了一个值，初始化为0，对10做乘法，再对传入10取余，得到最后一位
+            res = res * 10 + a % 10;
+            // 为嘛要判断这俩相同不呢
+            if(res % 10 != a % 10){
+                return 0;
+            }
+            // 对10取整除，得到前边几位
+            a /= 10;
+        }
+
+        return res;
+    }
     //使用异或找到数组中不重复数字（*推荐*）
     public static int solutionOne(int[] arr) {
         int result = 0;
@@ -115,6 +162,7 @@ public class BeforeBegin {
     }
 
     //合并两个有序数组
+
     public static int[] mergeArray(int[] nums1, int m, int[] nums2, int n) {
 
         int i = m - 1, j = n - 1;
@@ -140,20 +188,6 @@ public class BeforeBegin {
 
         return nums1;
 
-    }
-
-    // 整数反转
-    public int reverseInteger(int a){
-
-        // 对10整除，得到非0的部分
-        // 对非0的部分反转，直接变成字符串，字符串来反转算了
-        String str = "";
-        // 把字符串变成char的数组，反转数组会不，不会，尴尬！
-
-        // 大概的思路应该用指针的形势，头指针和尾指针，相互换，相互跑，啥时候试试吧，今天休息！
-
-        //
-        return 1;
     }
 
 
