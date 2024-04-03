@@ -15,42 +15,40 @@ public class TreeStructure {
         TreeNode node = new TreeNode(1,
                 // 左边的，现在在第二层
                 new TreeNode(2,
-                // 第三层子节点
-                    new TreeNode(3,
-                        // 第四层子节点，还是从左边走的
-                            new TreeNode(4),new TreeNode(4)),new TreeNode(3)),
+                        // 第三层子节点
+                        new TreeNode(3,
+                                // 第四层子节点，还是从左边走的
+                                new TreeNode(4), new TreeNode(4)), new TreeNode(3)),
                 // 这个可以尝试到第五层；
                 // 右边的
                 new TreeNode(2,
                         // 第三层子节点
                         new TreeNode(3,
                                 // 第四层在左边，第五曾尝试从右边走
-                                new TreeNode(4),new TreeNode(4,
+                                new TreeNode(4), new TreeNode(4,
                                 // 勒，从右边走的第五层，我特么的看了半天，这破玩意，也不知道哪错了，还是删了重来爽。。
-                                new TreeNode(5),new TreeNode(5))),new TreeNode(3)));
+                                new TreeNode(5), new TreeNode(5))), new TreeNode(3)));
 
         TreeStructure treeStructure = new TreeStructure();
-
         System.out.println(treeStructure.maxDepth(node));
-
-
     }
 
     /*
         这才是一个树结构
      */
-    public static class TreeNode{
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
 
-        TreeNode(){}
+        TreeNode() {
+        }
 
-        TreeNode(int val){
+        TreeNode(int val) {
             this.val = val;
         }
 
-        TreeNode(int val,TreeNode left,TreeNode right){
+        TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
@@ -62,8 +60,8 @@ public class TreeStructure {
         计算树结构的最大深度
         递归（拿个乌龟在那递，笑死）
      */
-    public int maxDepth(TreeNode root){
-        return root == null ? 0 : Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;
+    public int maxDepth(TreeNode root) {
+        return root == null ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
     // 打印树结构，什么BFM（队列先进先出）,DFS（栈空间压栈，先进后出来），反正就是遍历，放进去再出来，
@@ -95,22 +93,22 @@ public class TreeStructure {
     // 对称二叉树
 
     public boolean isSymmetric(TreeNode node) {
-        if(node == null){
+        if (node == null) {
             return true;
         }
-        if(node.val >= 100 || node.val <= -100){
+        if (node.val >= 100 || node.val <= -100) {
             return false;
         }
-        return isSymmetricHelper( node.left, node.right);
+        return isSymmetricHelper(node.left, node.right);
     }
 
     // 用递归的方法做
     private boolean isSymmetricHelper(TreeNode left, TreeNode right) {
-        if(left == null && right == null){
+        if (left == null && right == null) {
             return true;
         }
         // 当前节点只有一个或者两个的左右节点都不相同，直接返回false；
-        if(left == null || right == null || left.val != right.val){
+        if (left == null || right == null || left.val != right.val) {
             return false;
         }
         // 比较每一层的数
@@ -123,9 +121,9 @@ public class TreeStructure {
     // 二叉树的层序遍历
     // BFS(breadth first search) 广度优先搜索，这个题先用这个试试
     // DFS(depth first search)；深度优先算法，这个暂时放在这儿，等我看完篇文章，然后再把这个算法题做了。
-    public List<List<Integer>> levelOrder(TreeNode node){
+    public List<List<Integer>> levelOrder(TreeNode node) {
 
-        if(node == null){
+        if (node == null) {
             return new ArrayList<List<Integer>>();
         }
         // 定义需要的集合
@@ -135,21 +133,21 @@ public class TreeStructure {
         // 根节点入队
         queue.add(node);
         // 如果队列不为空就继续循环
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             // BFS打印，每层的节点数为levelNumber
             int levelNumber = queue.size();
             // subList存每层的节点值
             List<Integer> subList = new ArrayList<Integer>();
             // 循环打印每层的数据，并存入队列中
-            for(int i = 0;i<levelNumber;i++){
+            for (int i = 0; i < levelNumber; i++) {
                 // 出队
                 TreeNode root = queue.poll();
                 subList.add(root.val);
                 // 左右节点不为空则加入队列中
-                if(root.left != null){
+                if (root.left != null) {
                     queue.add(root.left);
                 }
-                if(root.right != null){
+                if (root.right != null) {
                     queue.add(root.right);
                 }
             }
@@ -158,7 +156,6 @@ public class TreeStructure {
         }
         return list;
     }
-
 
 
 }

@@ -13,24 +13,48 @@ public class BeforeBegin {
 //        for (int i : nums) {
 //            System.out.println(i);
 //        }
-        System.out.println(reverseInteger(123450));
+        System.out.println(myAsciiToInteger("2147483648"));
+
     }
 
-    public static int myAsciiToInteger(String s){
+    // 验证AsciiToInt算法，说了老实话，有点搞不明白啊，这里边肯定用了Ascii码和字符或者数字的对应关系，回去啥时候看看吧。。
+    public static int myAsciiToInteger(String s) {
 
         // 丢弃前边无用的前导空格
-        // 确定字符是正的还是负的
-        // 无论是哪的其余东西除了数字都要被忽略
-        // 没有读入数据，则返回为零
-        // 返回的整数有范围的就是int的范围啦，如果多了需要截取到范围的数
-
-        // 总结：需求太多了，明天再弄吧
-
-        return 1;
+        s = s.trim();
+        // 如果长度为零，返回0
+        if (s.length() == 0) {
+            return 0;
+        }
+        // 遍历字符中的数字
+        int index = 0;
+        // 最后输出的结果
+        int result = 0;
+        // 判断符号，1是正数，-1为负数，默认为整数
+        int flag = 1;
+        // 定义字符串长度，为嘛要用这个呢
+        int length = s.length();
+        if (s.charAt(index) == '-' || s.charAt(index) == '+') {
+            flag = s.charAt(index++) == '+' ? 1 : -1;
+        }
+        // 取出来字符串的字符，然后转换成数字
+        for (; index < length; ++index) {
+            int digit = s.charAt(index) - '0';
+            if (digit < 0 || digit > 9) {
+                break;
+            }
+            // 越界处理，这里是日了狗的边界处理，这些个为嘛要这样判断啊。。最后一次的上一次判断，得到的这些东西？应该是吧，再说咯
+            if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10)) {
+                return flag == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            } else {
+                result = result * 10 + digit;
+            }
+        }
+        return result * flag;
     }
 
     // 外观数列
-    public static int countAndSay(int a){
+    public static int countAndSay(int a) {
 
         // 数列是对前一项的描述；for example；
         // 1，的后一项“一个1”
@@ -40,20 +64,29 @@ public class BeforeBegin {
         // 111221，的后一项“三个1，两个2，一个1”
         // 312211;
 
-        // 规律找到了，怎么做呢，不晓得，看情况吧，嘻嘻嘻嘻嘻嘻
+        // 规律找到了，现在是输入一个整数，输出他对应的字符串值，比如输入整数4，输出“1211”
+        // 网上说的是递归+双指针的做法，我也是这样想的，其实我啥也没想，但思路至少有了。
+
+        // 飞机打多了，有点烦躁，IELTS还要复习，还要看面试的东西，还要学习下区块链，还要刷算法题
+        // 一时间有点无从下手，本来是上午看面试题，下午刷算法的，结果现在连晚上都要看雅思了吗，
+        // 问题是雅思也有一点看不懂噢，现在听英语有点像听天书样，还是飞机打多了，怪不得黄赌毒里边黄是第一个呢
+        // 那些吸毒的估计也差不多吧，是不是阴阳调和一下就会好很多呀，毕竟两个一起做运动，发汗了，明天出去理发
+        // 然后锻炼下，发下汗，排下身体里的杂质，今天先这样吧，把代码提交了，明天又是充满希望的一日！！！
+
+
 
         return 1;
     }
 
     // 整数反转
-    public static int reverseInteger(int a){
+    public static int reverseInteger(int a) {
 
-        int res= 0;
-        while(a != 0){
+        int res = 0;
+        while (a != 0) {
             // 设定了一个值，初始化为0，对10做乘法，再对传入10取余，得到最后一位
             res = res * 10 + a % 10;
             // 为嘛要判断这俩相同不呢
-            if(res % 10 != a % 10){
+            if (res % 10 != a % 10) {
                 return 0;
             }
             // 对10取整除，得到前边几位
@@ -62,6 +95,7 @@ public class BeforeBegin {
 
         return res;
     }
+
     //使用异或找到数组中不重复数字（*推荐*）
     public static int solutionOne(int[] arr) {
         int result = 0;
