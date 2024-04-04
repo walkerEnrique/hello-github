@@ -13,8 +13,18 @@ public class BeforeBegin {
 //        for (int i : nums) {
 //            System.out.println(i);
 //        }
-        System.out.println(myAsciiToInteger("2147483648"));
+        System.out.println(countAndSay(4));
 
+
+    }
+
+    // 反转数组
+    public static void rotate(int[][] matrix){
+
+        // 首先解决循环问题，其次调换位置
+        // 肚子饿了，饿得不想想问题了，这个就放着吧
+        //
+        //
     }
 
     // 验证AsciiToInt算法，说了老实话，有点搞不明白啊，这里边肯定用了Ascii码和字符或者数字的对应关系，回去啥时候看看吧。。
@@ -54,7 +64,7 @@ public class BeforeBegin {
     }
 
     // 外观数列
-    public static int countAndSay(int a) {
+    public static String countAndSay(int n) {
 
         // 数列是对前一项的描述；for example；
         // 1，的后一项“一个1”
@@ -65,17 +75,41 @@ public class BeforeBegin {
         // 312211;
 
         // 规律找到了，现在是输入一个整数，输出他对应的字符串值，比如输入整数4，输出“1211”
-        // 网上说的是递归+双指针的做法，我也是这样想的，其实我啥也没想，但思路至少有了。
 
-        // 飞机打多了，有点烦躁，IELTS还要复习，还要看面试的东西，还要学习下区块链，还要刷算法题
-        // 一时间有点无从下手，本来是上午看面试题，下午刷算法的，结果现在连晚上都要看雅思了吗，
-        // 问题是雅思也有一点看不懂噢，现在听英语有点像听天书样，还是飞机打多了，怪不得黄赌毒里边黄是第一个呢
-        // 那些吸毒的估计也差不多吧，是不是阴阳调和一下就会好很多呀，毕竟两个一起做运动，发汗了，明天出去理发
-        // 然后锻炼下，发下汗，排下身体里的杂质，今天先这样吧，把代码提交了，明天又是充满希望的一日！！！
-
-
-
-        return 1;
+        // 定义两个StringBuilder，一个存原来的数值，另外一个存描述的数值
+        StringBuilder result = new StringBuilder("1");
+        StringBuilder prev;
+        // 定义个数
+        int count;
+        // 定义描述的char类型
+        char say;
+        // for循环当前的n；
+        for (int i = 1; i < n; i++) {
+            // 先复制r给到p
+            prev = result;
+            // 再重新定义r
+            result = new StringBuilder();
+            // 定义计数为1
+            count = 1;
+            // 遇到新的字符，定义say
+            say = prev.charAt(0);
+            // for循环p的长度
+            for (int j = 1, len = prev.length(); j < len; j++) {
+                // 判断是否是新的字符，如果遇到了新的字符，把值赋给say，count重置1，新的字符给到say
+                if (prev.charAt(j) != say) {
+                    result.append(count).append(say);
+                    count = 1;
+                    say = prev.charAt(j);
+                } else {
+                    // 如果没有遇到新的字符，count++
+                    count++;
+                }
+            }
+            // 最后r.append-count-say
+            result.append(count).append(say);
+        }
+        // 返回r
+        return result.toString();
     }
 
     // 整数反转
@@ -196,7 +230,6 @@ public class BeforeBegin {
     }
 
     //合并两个有序数组
-
     public static int[] mergeArray(int[] nums1, int m, int[] nums2, int n) {
 
         int i = m - 1, j = n - 1;
