@@ -157,5 +157,14 @@ public class TreeStructure {
         return list;
     }
 
+    //将有序数组转化为平衡二叉树
+    public TreeNode sortedTreeToBST(int[] nums){
+
+        // 什么是平衡二叉树，平衡二叉树就是左右两边一样的，要不递增，要不就一起递减
+        // 首先咱们学会怎么样遍历树结构，使用层序遍历，还是其他遍历，我好像只做过层序遍历
+        // 详情看一看上一个方法，怎么做还不晓得，先把牛比给吹到这儿。
+
+        return null;
+    }
 
 }

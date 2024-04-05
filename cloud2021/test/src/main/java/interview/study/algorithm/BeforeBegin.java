@@ -13,8 +13,20 @@ public class BeforeBegin {
 //        for (int i : nums) {
 //            System.out.println(i);
 //        }
-        System.out.println(countAndSay(4));
-
+        int[][] targetArr = new int[][]{{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15},{16,17,18,19,20},{21,22,23,24,25}};
+//        rotate(targetArr);
+        for (int i = 0 , length = targetArr.length; i < length; i++) {
+            for (int j = 0; j < targetArr[i].length; j++) {
+                // 打印内层循环，如何在一个数组遍历完了后提行呢，后边家一个不就好了嘛。。
+                // 把他变好看点，最后一个不加，
+                if(j == targetArr[i].length - 1){
+                    System.out.print(targetArr[i][j]);
+                    break;
+                }
+                System.out.print(targetArr[i][j]+" , ");
+            }
+            System.out.println(" ");
+        }
 
     }
 
@@ -22,12 +34,25 @@ public class BeforeBegin {
     public static void rotate(int[][] matrix){
 
         // 首先解决循环问题，其次调换位置
-        // 肚子饿了，饿得不想想问题了，这个就放着吧
-        //
-        //
+        // 因为是对称的数组，解决前半行就行，现在是使用的直接旋转法，直接给它旋了
+        int length = matrix.length;
+        // i为列信息，j为行信息
+        for (int i = 0; i < length / 2; i++) {
+            for (int j = i; j < length - i -1; j++) {
+                int temp = matrix[i][j];
+                // 定义行编号
+                int m = length - j -1;
+                // 定义列编号
+                int n = length - i -1;
+                matrix[i][j] = matrix[m][i];
+                matrix[m][i] = matrix[n][m];
+                matrix[n][m] = matrix[j][n];
+                matrix[j][n] = temp;
+            }
+        }
     }
 
-    // 验证AsciiToInt算法，说了老实话，有点搞不明白啊，这里边肯定用了Ascii码和字符或者数字的对应关系，回去啥时候看看吧。。
+    // 验证AsciiToInt算法，说了老实话，有点搞不明白啊，这里边肯定用了Ascii码和字符或者数字的对应关系，回去啥时候看看
     public static int myAsciiToInteger(String s) {
 
         // 丢弃前边无用的前导空格
@@ -190,7 +215,7 @@ public class BeforeBegin {
         int majorityCount = nums.length / 2;
         for (; ; ) {
             int candidate = nums[ranRange(rand, 0, nums.length)];
-            if (countOccurences(nums, candidate) > majorityCount) {
+            if (countOccurrence(nums, candidate) > majorityCount) {
                 return candidate;
             }
         }
@@ -200,7 +225,7 @@ public class BeforeBegin {
         return rand.nextInt(max - min) + min;
     }
 
-    public static int countOccurences(int nums[], int num) {
+    public static int countOccurrence(int nums[], int num) {
         int count = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == num) {
@@ -224,7 +249,6 @@ public class BeforeBegin {
             } else {
                 column--;
             }
-
         }
         return false;
     }
