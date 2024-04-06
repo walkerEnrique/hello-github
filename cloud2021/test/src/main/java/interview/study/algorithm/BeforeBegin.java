@@ -256,18 +256,20 @@ public class BeforeBegin {
     //合并两个有序数组
     public static int[] mergeArray(int[] nums1, int m, int[] nums2, int n) {
 
+        // 需要循环的次数以及下角标
         int i = m - 1, j = n - 1;
+        // 定义存放数组需要的长度
         int index = m + n - 1;
+        // 循环这个东西，开始往里边放值！放呀放，放完了就好了
         while (i >= 0 && j >= 0) {
             if (nums1[i] > nums2[j]) {
                 nums1[index] = nums1[i];
                 i--;
-                index--;
             } else {
                 nums1[index] = nums2[j];
                 j--;
-                index--;
             }
+            index--;
         }
         if (i < 0) {
             while (j >= 0) {
@@ -276,10 +278,24 @@ public class BeforeBegin {
                 j--;
             }
         }
-
         return nums1;
-
     }
 
-
+    // 寻找第一个错误版本
+    public static int firstBadVersion(int n){
+        int start=1,end=n;
+        while(start<end){
+            // 这里还会超时，可能语法哪有问题
+            int key = (end - start) / 2 +start;
+            if(isBadVersion(start)){
+                end = key;
+            }else{
+                start = key + 1;
+            }
+        }
+        return start;
+    }
+    private static boolean isBadVersion(int key) {
+        return false;
+    }
 }

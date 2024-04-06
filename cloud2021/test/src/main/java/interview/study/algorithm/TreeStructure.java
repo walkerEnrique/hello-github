@@ -30,7 +30,8 @@ public class TreeStructure {
                                 new TreeNode(5), new TreeNode(5))), new TreeNode(3)));
 
         TreeStructure treeStructure = new TreeStructure();
-        System.out.println(treeStructure.maxDepth(node));
+//        System.out.println(treeStructure.maxDepth(node));
+        System.out.println(treeStructure.sortedTreeToBST(new int[]{1,2,3,4,5}));
     }
 
     /*
@@ -162,9 +163,29 @@ public class TreeStructure {
 
         // 什么是平衡二叉树，平衡二叉树就是左右两边一样的，要不递增，要不就一起递减
         // 首先咱们学会怎么样遍历树结构，使用层序遍历，还是其他遍历，我好像只做过层序遍历
-        // 详情看一看上一个方法，怎么做还不晓得，先把牛比给吹到这儿。
+        // 又开始递归了噢，既然数字里边的顺序已经排列好了，那么我们只需要把元素放进去就行，
+        // 判断长度
+        if(nums.length == 0){
+            return null;
+        }
+        // 方法重载，我去还有个0，真呀真奇怪；
+     return sortedTreeToBST(nums,0,nums.length - 1);
+    }
 
-        return null;
+    private TreeNode sortedTreeToBST(int[] nums, int start, int end) {
+        // 虽然不知道怎么做的，但是看上去很牛比的样子
+        if(start > end){
+            return null;
+        }
+        // 定义中间的节点
+        int mid = (end + start) >> 1;
+        TreeNode root = new TreeNode(nums[mid]);
+        // 左边的节点
+        root.left = sortedTreeToBST(nums, start,mid - 1);
+        // 右边的节点
+        root.right = sortedTreeToBST(nums, mid + 1,end);
+
+        return root;
     }
 
 }
