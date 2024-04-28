@@ -43,10 +43,22 @@ public class OthersProblems {
     private int reverseBits(int n){
         // you need treat n as an unsigned value;
         // 把n转换二进制，然后顺序倒过来就行了，
-        // 估计也是用异或或者与什么的操作，没思路，等下抄答案
+        // 杂七杂八的异或与运算，看不太懂，一般这种看不懂的我是不会写的，就是这么硬气！
+        // 总的来说就是从大（16位）互相移动，到（8位）互相移动交换位置，直到最后一位相互交换；
 
-
-        return 1;
+        // 还是背答案吧，真，最后一道题
+        // 定义结果
+        int res = 0;
+        // 循环重置位数
+        for (int i = 0; i < 32;i++){
+            // res向左移动一位，用来存放n的最后一位数
+            res<<=1;
+            //  把n的右边的最后一位数放入有res中，累加一下，看不懂，但我大为震撼！
+            res+=n & 1;
+            // 再把n向右边移动一位，最后一位数字去掉
+            n>>=1;
+        }
+        return res;
     }
 
     // 杨辉三角
@@ -100,11 +112,19 @@ public class OthersProblems {
         return stack.isEmpty();
     }
 
-    // 缺失数字，吗的这个怎么这么长，是不是压轴题目？
-    // 给定一个包含[0,n]的数组，找出没有出现在[0,n]中的那个数
+    // 给定一个包含[0,n]的n位数组nums，找出没有出现在范围[0,n]中的那个数
     private int missingNumber(int[] nums){
+        // 还是用异或那一套解
+        // 自己和自己异或等于0
+        // 任何数字和0异或还是等于它自己
+        // 异或运算具有交换性
 
-        return 1;
+        int xor = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // i不是个下角标吗，这为嘛，，不管了，最后一道题，再说
+            xor^= nums[i]^(i+1);
+        }
+        return xor;
     }
 
 }
