@@ -13,16 +13,13 @@ public class CountDownLatchDemo {
         //循环创建线程
         for (int i = 1; i <= 7; i++)
         {
-            new Thread(()->{
-                System.out.println(Thread.currentThread().getName()+"\t 被灭了");
-                countDownLatch.countDown();
-            }, CountryEnum.forEach_CountryEnum(i).getRetMessage()).start();
+//            new Thread(()->{
+//                System.out.println(Thread.currentThread().getName()+"\t 被灭了");
+//                countDownLatch.countDown();
+//            }, CountryEnum.forEach_CountryEnum(i).getRetMessage()).start();
         }
         countDownLatch.await();
         System.out.println(Thread.currentThread().getName()+"\t 统一了");
-        System.out.println(CountryEnum.ONE);
-        System.out.println(CountryEnum.ONE.getRetcode());
-        System.out.println(CountryEnum.ONE.getRetMessage());
         System.out.println(Integer.MAX_VALUE);
     }
 

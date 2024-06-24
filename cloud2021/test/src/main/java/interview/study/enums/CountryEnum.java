@@ -19,12 +19,12 @@ public enum  CountryEnum
 
     public static CountryEnum forEach_CountryEnum(int index)
     {
-        CountryEnum[] myArr = CountryEnum.values();
-        for (CountryEnum element: myArr) {
-            if(index == element.getRetcode()){
-                return element;
-            }
-        }
+//        CountryEnum[] myArr = CountryEnum.values();
+//        for (CountryEnum element: myArr) {
+//            if(index == element.getRetcode()){
+//                return element;
+//            }
+//        }
         return null;
     }
 }

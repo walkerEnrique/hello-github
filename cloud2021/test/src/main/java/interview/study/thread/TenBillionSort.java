@@ -1,6 +1,6 @@
 package interview.study.thread;
 
-import sun.nio.ch.DirectBuffer;
+//import sun.nio.ch.DirectBuffer;
 
 import java.io.File;
 import java.io.IOException;
@@ -85,7 +85,7 @@ class MassiveCounterStore {
         } catch (IOException ignored) {
         }
         for (MappedByteBuffer buffer : buffers) {
-            ((DirectBuffer) buffer).cleaner().clean();
+//            ((DirectBuffer) buffer).cleaner().clean();
         }
     }
 }

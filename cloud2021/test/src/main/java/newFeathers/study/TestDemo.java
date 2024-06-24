@@ -1,8 +1,16 @@
 package newFeathers.study;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class TestDemo {
+
+    // 还有这个，看都看不懂的
+    private ThreadLocal<List<Integer>> threadLocalList = ThreadLocal.withInitial(ArrayList::new);
+
     public static void main(String[] args) {
         // 这沙雕java还单独存到常量池里边了，导致这样输出的直接false；
         String str1 = new StringBuffer("ja").append("va").toString();
@@ -16,12 +24,8 @@ public class TestDemo {
         System.out.println(str2.intern());
         System.out.println(str2 == str2.intern());
 
-
         // 还可以这样写，但是要解决报错，就不搞了
 //        Collections.sort(students,Student.Comparator.comparing(Student::getName).thenComparingInt(Student::getAge));
-
-        ConcurrentHashMap<Object, Object> s = new ConcurrentHashMap<>();
-
 
     }
 
